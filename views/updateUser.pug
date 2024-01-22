@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Edit User
+    form(method='POST', action='http://localhost:3000/api/user/' + user._id)
+        #form-group
+            label Username
+            input.form-control(name='username', type='text', value=user.username)
+        #form-group
+            label password
+            input.form-control(name='password', type='password')
+        input.btn.btn-primary(type='submit', value='submit')

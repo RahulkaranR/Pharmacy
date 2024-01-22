@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    if message
+        .alert.alert-primary.m-3(role='alert')= message
+    .container.p-4
+      .card
+        .card-header
+          | PROFILE PAGE
+        .card-body
+          h5.card-title
+            | USER NAME :
+            span= user.username
+          p.card-text
+            | This is your profie page you can modify your profile using below button and you can delete your button
+          a.btn.btn-secondary.m-2(href='http://localhost:3000/api/user/updatepage') Edit
+          a.btn.btn-warning.m-2(href='http://localhost:3000/auth/logout') Logout
+          a.btn.btn-danger.m-2(href='http://localhost:3000/api/user/' + user._id) Delete 

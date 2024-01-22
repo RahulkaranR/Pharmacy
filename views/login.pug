@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 User Login
+    if error
+        .alert.alert-primary.m-3(role='alert')= error
+    form(method='POST', action='http://localhost:3000/auth/login')
+        #form-group
+            label Username
+            input.form-control(name='username', type='text')
+        #form-group
+            label password
+            input.form-control(name='password', type='password')
+        input.btn.btn-primary(type='submit', value='submit')

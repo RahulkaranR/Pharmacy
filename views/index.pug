@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    if message
+        .alert.alert-primary.m-3(role='alert')= message
+    .container
+        .row
+            .col.m-4
+                br
+                br
+                br
+                br
+                .card
+                    .card-header
+                        | Welcome to Pharmacy
+                    .card-body
+                        h3.card-title We safegaurd your health &amp; beauty
+                        p.card-text
+                            | Please register in this website and you can see all the medicine and the price and you can create your medicine also
+                        a.btn.btn-secondary.m-2(href='http://localhost:3000/api/user/createPage') Please Register
+            .col
+                img(width='600px' src='https://www.venkateshwaragroup.in/vgiblog/wp-content/uploads/2022/03/www.reallygreatsite.com-1.jpg')

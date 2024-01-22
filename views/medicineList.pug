@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    h1 Medicine List
+    if message 
+        .alert.alert-primary.m-3(role='alert')= message
+    form(method='POST' action='http://localhost:3000/api/medicine/medicineSearch')
+        .container
+            .row
+                .col
+                    #form-group
+                    input.form-control(name='search' type='text' placeholder="Search")
+                .col
+                    input.btn.btn-primary(type='submit' value='submit')
+    .container
+        ul.list-group
+            each medicine, i in medicines
+                li.list-group-item
+                    .row
+                        .col
+                            div
+                                | Medicine Name = 
+                                span= medicine.name
+                            div
+                                if medicine.price <= 10
+                                    .text-success
+                                        | Price = 
+                                        span= medicine.price 
+                                            span Rs
+                                if medicine.price > 10 && medicine.price <= 50
+                                    .text-warning
+                                        | Price = 
+                                        span= medicine.price 
+                                            span Rs
+                                if medicine.price > 50
+                                    .text-danger
+                                        | Price = 
+                                        span= medicine.price 
+                                            span Rs
+                        .col.text-end
+                            a(href='http://localhost:3000/api/medicine/updateMedicinePage/' + medicine._id)
+                                button.btn.m-2.btn-secondary(type='button') Edit
+                            a(href='http://localhost:3000/api/medicine/deleteM/' + medicine._id)
+                                button.btn.m-2.btn-danger(type='button' onclick= 'return confirm("Confirm if you want to delete")') Delete 

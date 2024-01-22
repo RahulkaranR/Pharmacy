@@ -1,0 +1,35 @@
+doctype html
+html
+    head
+        script(type='text/javascript').
+            function updateDateTime() {
+            const now = new Date();
+            const currentDateTime = now.toLocaleString();
+            document.querySelector('#datetime').textContent = currentDateTime;
+            }
+            setInterval(updateDateTime, 100);
+        title Blog
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/style.css')
+    body
+        head 
+            nav(class="navbar navbar-expand-lg navbar-dark bg-dark")
+                .container-fluid
+                    a(class="navbar-brand" href="#") Good Pharmacy
+                    div(class="navbar-nav")
+                        a(class="nav-link active"  href="http://localhost:3000/") Home
+                        if !user
+                            a(class="nav-link  active" href="http://localhost:3000/api/user/createPage") Register
+                            a(class="nav-link  active" href="http://localhost:3000/auth/login") Login
+                        if user
+                            a(class="nav-link active" href="http://localhost:3000/api/user/profilePage") User 
+                                span= user.username
+                            a(class="nav-link active" href="http://localhost:3000/api/medicine/medicineList") MedicineList
+                            a(class="nav-link active" href="http://localhost:3000/api/medicine/createMedicinePage") CreateMedicine
+                        .text-primary.pt-2
+                            #datetime
+                        
+        .container
+            block content
+        script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+        script(src='/bootstrap/js/bootstrap.js')

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1 Create New Medicine
+    if error
+        .alert.alert-primary.m-3(role='alert')= error
+    form(method='POST', action='http://localhost:3000/api/medicine/createMedicine')
+        #form-group
+            label name
+            input.form-control(name='name', type='text')
+        #form-group
+            label price
+            input.form-control(name='price', type='number')
+        input.btn.btn-primary(type='submit', value='submit')
